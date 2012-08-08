@@ -26,3 +26,8 @@ class BaseSearchTest(BaseTest):
         ctool = self.portal.portal_catalog
         self.assertEqual(len(ctool.unrestrictedSearchResults(**query)),
                              results_num)
+
+    def assertSearchFindsInOrder(self, query, ids):
+        ctool = self.portal.portal_catalog
+        result_ids = [b.getId for b in ctool.unrestrictedSearchResults(**query)]
+        self.assertListEqual(result_ids, ids)
