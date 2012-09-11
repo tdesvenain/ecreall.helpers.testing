@@ -33,7 +33,12 @@ def createGroups(portal, groupdefs):
         groupname = groupinfo['group']
         addGroup(gtool, groupname, roles=groupinfo['roles'])
         group = gtool.getGroupById(groupname)
-        group.setGroupProperties({'title': groupinfo['title']})
+        properties = {'title': groupinfo['title']}
+        if 'properties' in groupinfo:
+            properties.update(groupinfo.get('properties', {}))
+
+        group.setGroupProperties(properties)
+        
         for supergroup in groupinfo['groups']:
             gtool.getGroupById(supergroup).addMember(groupname)
 
