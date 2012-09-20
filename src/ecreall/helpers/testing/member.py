@@ -1,7 +1,7 @@
 from plone.app.testing.interfaces import TEST_USER_ID, TEST_USER_NAME
 from plone.app.testing import setRoles, login, logout
 
-def addMember(pas, username, fullname="", email="", roles=('Member',)):
+def addMember(pas, username, roles=('Member',)):
     """Create an new member.
 
     The password is always 'secret'.
