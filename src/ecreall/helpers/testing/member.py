@@ -67,16 +67,5 @@ def createMembers(portal, userdefs):
             group = gtool.getGroupById(groupname)
             group.addMember(username)
 
-    ged = portal.ged
-    media = portal.media
-
-    ged.manage_setLocalRoles('contributeurs', ('Contributor',))
-    ged.manage_setLocalRoles('animateurs', ('Reviewer',))
-    ged.reindexObjectSecurity()
-
-    media.manage_setLocalRoles('contributeurs', ('Contributor',))
-    media.manage_setLocalRoles('animateurs', ('Reviewer',))
-    media.reindexObjectSecurity()
-
     setRoles(portal, TEST_USER_ID, ['Member'])
     logout()
