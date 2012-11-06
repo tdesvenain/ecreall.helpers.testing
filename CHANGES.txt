@@ -4,6 +4,8 @@ Changelog
 1.3 (unreleased)
 ----------------
 
+- Minor fixes to docstrings
+  [cedricmessiant]
 - We can set properties on created groups.
 
 

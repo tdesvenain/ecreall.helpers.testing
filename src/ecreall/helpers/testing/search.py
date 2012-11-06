@@ -7,7 +7,7 @@ from base import BaseTest
 
 
 class BaseSearchTest(BaseTest):
-    """A class with many useful helpers to test workflows
+    """A class with many useful helpers to test search
     """
 
     def getBrain(self, uid):
