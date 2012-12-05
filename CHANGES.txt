@@ -4,8 +4,12 @@ Changelog
 1.3 (unreleased)
 ----------------
 
-- Minor fixes to docstrings
+- plone.app.testing dependency.
+  [thomasdesvenain]
+
+- Minor fixes to docstrings.
   [cedricmessiant]
+
 - We can set properties on created groups.
 
 
