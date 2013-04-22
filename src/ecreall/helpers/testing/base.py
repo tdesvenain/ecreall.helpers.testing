@@ -3,7 +3,7 @@ from Products.CMFCore.utils import getToolByName
 from plone.app.testing import login
 
 class BaseTest(object):
-    """A class with many useful helpers to test workflows
+    """A class with many useful helpers
     """
 
     def login(self, user):

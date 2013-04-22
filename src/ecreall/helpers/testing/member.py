@@ -1,7 +1,7 @@
 from plone.app.testing.interfaces import TEST_USER_ID, TEST_USER_NAME
 from plone.app.testing import setRoles, login, logout
 
-def addMember(pas, username, fullname="", email="", roles=('Member',)):
+def addMember(pas, username, roles=('Member',)):
     """Create an new member.
 
     The password is always 'secret'.
@@ -33,7 +33,12 @@ def createGroups(portal, groupdefs):
         groupname = groupinfo['group']
         addGroup(gtool, groupname, roles=groupinfo['roles'])
         group = gtool.getGroupById(groupname)
-        group.setGroupProperties({'title': groupinfo['title']})
+        properties = {'title': groupinfo['title']}
+        if 'properties' in groupinfo:
+            properties.update(groupinfo.get('properties', {}))
+
+        group.setGroupProperties(properties)
+        
         for supergroup in groupinfo['groups']:
             gtool.getGroupById(supergroup).addMember(groupname)
 
@@ -61,17 +66,6 @@ def createMembers(portal, userdefs):
         for groupname in userinfo['groups']:
             group = gtool.getGroupById(groupname)
             group.addMember(username)
-
-    ged = portal.ged
-    media = portal.media
-
-    ged.manage_setLocalRoles('contributeurs', ('Contributor',))
-    ged.manage_setLocalRoles('animateurs', ('Reviewer',))
-    ged.reindexObjectSecurity()
-
-    media.manage_setLocalRoles('contributeurs', ('Contributor',))
-    media.manage_setLocalRoles('animateurs', ('Reviewer',))
-    media.reindexObjectSecurity()
 
     setRoles(portal, TEST_USER_ID, ['Member'])
     logout()

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.0.2.dev0'
+version = '1.4.dev0'
 
 long_description = (
     open('README.txt').read()
@@ -36,6 +36,7 @@ setup(name='ecreall.helpers.testing',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'plone.app.testing',
       ],
       entry_points="""
       # -*- Entry points: -*-

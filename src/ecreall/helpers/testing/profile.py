@@ -26,4 +26,3 @@ def trace_time_content(func):
                                         time.gmtime(time.time() - t)),
                           "/".join(__args[0].getPhysicalPath())))
     return wrapper
-

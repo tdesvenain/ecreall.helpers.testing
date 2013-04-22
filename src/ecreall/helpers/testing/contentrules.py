@@ -7,7 +7,7 @@ from workflow import BaseWorkflowTest
 
 
 class BaseContentRulesTest(BaseWorkflowTest):
-    """A class with many useful helpers to test workflows
+    """A class with many useful helpers to test content rules
     """
 
     def contentrules_reset(self):
