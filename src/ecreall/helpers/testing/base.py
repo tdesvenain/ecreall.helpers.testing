@@ -1,6 +1,23 @@
-from Products.CMFCore.utils import getToolByName
-
 from plone.app.testing import login
+
+
+class FakeResponse(object):
+
+    redirect_url = None
+    def redirect(self, url):
+        self.redirect_url = url
+
+
+class FakeRequest(object):
+
+    def __init__(self):
+        self.form = {}
+        self.response = FakeResponse()
+
+    @property
+    def RESPONSE(self):
+        return self.response
+
 
 class BaseTest(object):
     """A class with many useful helpers

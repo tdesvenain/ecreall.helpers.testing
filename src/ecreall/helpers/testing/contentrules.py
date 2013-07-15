@@ -29,6 +29,8 @@ class BaseContentRulesTest(BaseWorkflowTest):
                                 getToolByName(self.layer['portal'], 'MailHost'))
         messages = " ".join(self._MailHost.messages)
         for recipient in recipients:
-            self.assertIn("To: %s" % recipient, messages)
+            self.assertIn("To: %s" % recipient, messages, recipient)
 
-        self.assertEqual(len(self._MailHost.messages), len(recipients))
+        self.assertEqual(len(self._MailHost.messages), len(recipients),
+                         "Too many recipients: %s/%s" % (len(recipients),
+                                                         len(self._MailHost.messages)))
