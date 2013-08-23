@@ -1,6 +1,3 @@
-from AccessControl import getSecurityManager
-
-from plone.app.testing import login, logout
 from Products.CMFCore.utils import getToolByName
 
 from workflow import BaseWorkflowTest
