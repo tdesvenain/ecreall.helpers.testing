@@ -3,6 +3,19 @@ from Products.CMFCore.utils import getToolByName
 from workflow import BaseWorkflowTest
 
 
+def setup_mockmailhost(portal):
+    """Use setup_mockmailhost(portal) in your setUpPloneSite method in your
+    layer to replace MailHost by a mock.
+    """
+    from Products.CMFPlone.tests.utils import MockMailHost
+    from Products.MailHost.interfaces import IMailHost
+    portal.email_from_address = 'portal@example.com'
+    mockmailhost = MockMailHost('MailHost')
+    portal.MailHost = mockmailhost
+    sm = portal.getSiteManager()
+    sm.registerUtility(component=mockmailhost, provided=IMailHost)
+
+
 class BaseContentRulesTest(BaseWorkflowTest):
     """A class with many useful helpers to test content rules
     """
