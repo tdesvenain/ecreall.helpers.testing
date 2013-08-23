@@ -1,6 +1,7 @@
 from plone.app.testing.interfaces import TEST_USER_ID, TEST_USER_NAME
 from plone.app.testing import setRoles, login, logout
 
+
 def addMember(pas, username, roles=('Member',)):
     """Create an new member.
 
@@ -38,7 +39,7 @@ def createGroups(portal, groupdefs):
             properties.update(groupinfo.get('properties', {}))
 
         group.setGroupProperties(properties)
-        
+
         for supergroup in groupinfo['groups']:
             gtool.getGroupById(supergroup).addMember(groupname)
 
@@ -51,7 +52,7 @@ def createMembers(portal, userdefs):
             {'user': 'contributeur', 'roles': (), 'groups': ('contributeurs',)},
             {'user': 'animateur', 'roles': (), 'groups': ('animateurs',)},
             ]
-"""
+    """
     setRoles(portal, TEST_USER_ID, ['Manager'])
     login(portal, TEST_USER_NAME)
 

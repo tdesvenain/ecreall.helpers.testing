@@ -1,9 +1,4 @@
-from AccessControl import getSecurityManager
-
-from plone.app.testing import login, logout
-from Products.CMFCore.utils import getToolByName
-
-from base import BaseTest
+from .base import BaseTest
 
 
 class BaseSearchTest(BaseTest):
