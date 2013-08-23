@@ -64,8 +64,3 @@ class BaseWorkflowTest(BaseTest):
         doc_state = wtool.getInfoFor(doc, 'review_state')
         self.assertEqual(doc_state, state, msg or
                   "Document state is %s, it should be %s." % (doc_state, state))
-
-    def assertHasLifeCycleState(self, doc, state, msg=None):
-        doc_state = ILifeCycleInfo(doc).state
-        self.assertEqual(doc_state, state, msg or
-        "Document lifecycle state is %s, it should be %s." % (doc_state, state))
