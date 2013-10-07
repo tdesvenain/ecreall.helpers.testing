@@ -43,7 +43,7 @@ def createGroups(portal, groupdefs):
         for supergroup in groupinfo['groups']:
             gtool.getGroupById(supergroup).addMember(groupname)
 
-def createMembers(portal, userdefs):
+def createMembers(portal, userdefs, log_in=True):
     """Create example members in testing environment
 
     example_userdefs = [
@@ -53,8 +53,9 @@ def createMembers(portal, userdefs):
             {'user': 'animateur', 'roles': (), 'groups': ('animateurs',)},
             ]
     """
-    setRoles(portal, TEST_USER_ID, ['Manager'])
-    login(portal, TEST_USER_NAME)
+    if log_in:
+        setRoles(portal, TEST_USER_ID, ['Manager'])
+        login(portal, TEST_USER_NAME)
 
     pas = portal.acl_users
     gtool = portal.portal_groups
@@ -68,5 +69,6 @@ def createMembers(portal, userdefs):
             group = gtool.getGroupById(groupname)
             group.addMember(username)
 
-    setRoles(portal, TEST_USER_ID, ['Member'])
-    logout()
+    if log_in:
+        setRoles(portal, TEST_USER_ID, ['Member'])
+        logout()
