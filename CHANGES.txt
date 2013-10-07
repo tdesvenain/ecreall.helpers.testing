@@ -4,6 +4,9 @@ Changelog
 1.5 (unreleased)
 ----------------
 
+- Now checks unexpected recipients of sent mail (not only missing ones).
+  [thomasdesvenain]
+
 - Login in is optional in createMembers method.
   [thomasdesvenain]
 
