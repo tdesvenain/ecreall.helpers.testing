@@ -4,6 +4,10 @@ Changelog
 1.5 (unreleased)
 ----------------
 
+- assertSearchFinds checks a number of results
+  or, now, the presence of an UID or an object in a list of results.
+  [thomasdesvenain]
+
 - Now checks unexpected recipients of sent mail (not only missing ones).
   [thomasdesvenain]
 

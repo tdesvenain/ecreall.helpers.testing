@@ -1,5 +1,6 @@
 from .base import BaseTest
 from Products.CMFCore.interfaces._content import IContentish
+from plone.uuid.interfaces import IUUID
 
 
 class BaseSearchTest(BaseTest):
@@ -38,7 +39,7 @@ class BaseSearchTest(BaseTest):
         elif IContentish.providedBy(result):
             self.assertTrue(IUUID(result) in [r.UID for r in brains],
                 "%s document not found in results : %s" % (
-                                            '/'.join(results.getPhysicalPath()),
+                                            '/'.join(r.getPhysicalPath()),
                                             [r.getPath() for r in brains]))
         else:
             raise ValueError("parameter must be an uid or a results num")
