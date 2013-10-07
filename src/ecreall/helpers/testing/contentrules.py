@@ -41,6 +41,14 @@ class BaseContentRulesTest(BaseWorkflowTest):
         for recipient in recipients:
             self.assertIn("To: %s" % recipient, messages, recipient)
 
+        for message in self._MailHost.messages:
+            for recipient in recipients:
+                if "To: %s" % recipient in message:
+                    break
+            else:
+                self.assertFalse(1, "Message sent to unexpected recipient : %s" % message)
+
         self.assertEqual(len(self._MailHost.messages), len(recipients),
-                         "Too many recipients: %s/%s" % (len(recipients),
-                                                         len(self._MailHost.messages)))
+                         "Too many recipients: %s/%s" % (len(self._MailHost.messages),
+                                                         len(recipients),
+                                                         ))
