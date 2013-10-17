@@ -4,6 +4,10 @@ Changelog
 1.5 (unreleased)
 ----------------
 
+- added assertSameDay assert to compare dates
+  (in DateTime, string or datetime format).
+  [thomasdesvenain]
+
 - assertSearchFinds checks a number of results
   or, now, the presence of an UID or an object in a list of results.
   [thomasdesvenain]
