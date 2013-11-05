@@ -4,7 +4,9 @@ Changelog
 1.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Modify datify to check isinstance of datetime first and then date because a
+  datetime is an instance of date.
+  [vincentfretin]
 
 
 1.5 (2013-11-04)
