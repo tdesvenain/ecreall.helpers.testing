@@ -1,14 +1,14 @@
 from plone.app.testing import login
 
 
-class FakeResponse(object):
+class FakeResponse(dict):
 
     redirect_url = None
     def redirect(self, url):
         self.redirect_url = url
 
 
-class FakeRequest(object):
+class FakeRequest(dict):
 
     def __init__(self):
         self.form = {}

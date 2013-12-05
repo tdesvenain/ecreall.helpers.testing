@@ -4,6 +4,9 @@ Changelog
 1.6 (unreleased)
 ----------------
 
+- FakeRequest and FakeResponse inherit from dict.
+  [thomasdesvenain]
+
 - Modify datify to check isinstance of datetime first and then date because a
   datetime is an instance of date.
   [vincentfretin]
