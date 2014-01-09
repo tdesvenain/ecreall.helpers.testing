@@ -43,7 +43,7 @@ class BaseSearchTest(BaseTest):
         elif IContentish.providedBy(result):
             self.assertTrue(IUUID(result) in [r.UID for r in brains],
                 "%s document not found in results : %s" % (
-                                            '/'.join(r.getPhysicalPath()),
+                                            '/'.join(result.getPhysicalPath()),
                                             [r.getPath() for r in brains]))
         else:
             raise ValueError("parameter must be an uid or a results num")
