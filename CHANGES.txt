@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6 (unreleased)
+1.6 (2014-01-13)
 ----------------
 
 - FakeRequest and FakeResponse inherit from dict.
