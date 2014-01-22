@@ -43,8 +43,11 @@ class FakeRequest(dict):
     def __contains__(self, a):
         return a in self.form or a in self.__dict__
 
-    def get(self, k, default=None):
-        return self.form.get(k, None) or self.__dict__.get(k, None) or default
+    def get(self, k, default='--MARKER--'):
+        if default == '--MARKER--':
+            return self.form.get(k, None) or super(FakeRequest, self).get(k)
+        else:
+            return self.form.get(k, None) or super(FakeRequest, self).get(k, None) or default
 
     def __getitem__(self, key):
         return self.get(key)
