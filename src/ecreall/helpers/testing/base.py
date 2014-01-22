@@ -58,6 +58,10 @@ class FakeRequest(dict):
     def RESPONSE(self):
         return self.response
 
+    @property
+    def REQUEST(self):
+        return self
+
     def getURL(self):
         return self.URL
 
