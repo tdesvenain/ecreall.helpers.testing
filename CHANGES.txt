@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.7 (unreleased)
+1.7 (2014-02-17)
 ----------------
 
 - Added status and header methods on FakeResponse
