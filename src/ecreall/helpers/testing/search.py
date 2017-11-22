@@ -1,6 +1,3 @@
-import datetime
-from DateTime import DateTime
-
 from Products.CMFCore.interfaces import IContentish
 from plone.uuid.interfaces import IUUID
 
@@ -56,26 +53,3 @@ class BaseSearchTest(BaseTest):
         result_ids = [b.getId for b in ctool.unrestrictedSearchResults(**query)]
         self.assertListEqual(result_ids, ids)
 
-    def assertListContains(self, list1, list2):
-        self.assertListEqual(sorted(list(list1)), sorted(list(list2)))
-
-    def assertSameDay(self, date1, date2):
-        date1, date2 = datify(date1), datify(date2)
-        self.assertEqual(date1.Date(), date2.Date())
-
-
-def datify(s):
-    """Get a DateTime object from a string (or anything parsable by DateTime,
-       a datetime.date, a datetime.datetime
-    """
-    if not isinstance(s, DateTime):
-        if s == 'None':
-            s = None
-        elif isinstance(s, datetime.datetime):
-            s = DateTime(s.isoformat())
-        elif isinstance(s, datetime.date):
-            s = DateTime(s.year, s.month, s.day)
-        elif s is not None:
-            s = DateTime(s)
-
-    return s

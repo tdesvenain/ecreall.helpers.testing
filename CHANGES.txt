@@ -4,7 +4,7 @@ Changelog
 1.8 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Move assertListContains in BaseTest class.
 
 
 1.7 (2014-02-17)
