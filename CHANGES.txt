@@ -4,6 +4,8 @@ Changelog
 1.8 (unreleased)
 ----------------
 
+- use plone.api
+
 - Helpers to enable / disable content rules.
 
 - We can test results of restricted search.
