@@ -24,24 +24,28 @@ class BaseSearchTest(BaseTest):
         ctool = self.portal.portal_catalog
         self.assertEqual(len(ctool.searchResults(UID=document.UID())), 0)
 
-    def assertSearchFinds(self, query, result):
+    def assertSearchFinds(self, query, result, restricted=False):
         """Check number of results of a query
            or check a document is present (by uid or object)
         """
         ctool = self.portal.portal_catalog
-        brains = ctool.unrestrictedSearchResults(**query)
+        if restricted:
+            brains = ctool.searchResults(**query)
+        else:
+            brains = ctool.unrestrictedSearchResults(**query)
+
         if type(result) == int:
             self.assertEqual(len(brains),
-                         result, [r.getPath() for r in brains])
+                             result, [r.getPath() for r in brains])
         elif type(result) == str:
             self.assertTrue(result in [r.UID for r in brains],
-                "%s document not found in results : %s" % (result,
-                                                [r.getPath() for r in brains]))
+                            "%s document not found in results : %s" % (result,
+                                                                       [r.getPath() for r in brains]))
         elif IContentish.providedBy(result):
             self.assertTrue(IUUID(result) in [r.UID for r in brains],
-                "%s document not found in results : %s" % (
-                                            '/'.join(result.getPhysicalPath()),
-                                            [r.getPath() for r in brains]))
+                            "%s document not found in results : %s" % (
+                                '/'.join(result.getPhysicalPath()),
+                                [r.getPath() for r in brains]))
         else:
             raise ValueError("parameter must be an uid or a results num")
 
