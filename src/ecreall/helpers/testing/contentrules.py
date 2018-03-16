@@ -1,6 +1,8 @@
 from Products.CMFCore.utils import getToolByName
+from plone.contentrules.engine.interfaces import IRuleStorage
+from zope.component import getUtility
 
-from workflow import BaseWorkflowTest
+from .workflow import BaseWorkflowTest
 
 
 def setup_mockmailhost(portal):
@@ -14,6 +16,15 @@ def setup_mockmailhost(portal):
     portal.MailHost = mockmailhost
     sm = portal.getSiteManager()
     sm.registerUtility(component=mockmailhost, provided=IMailHost)
+
+
+def enable_content_rules():
+    storage = getUtility(IRuleStorage)
+    storage.active = True
+
+def disable_content_rules():
+    storage = getUtility(IRuleStorage)
+    storage.active = False
 
 
 class BaseContentRulesTest(BaseWorkflowTest):
